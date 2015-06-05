@@ -5,8 +5,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             browserify: {
-                files: ['src/**/*.js', 'example.js'],
-                tasks: ['browserify:dev']
+                files: ['lib/**/*.js'],
+                tasks: ['browserify:lib']
             },
             options: {
                 nospawn: true,
