@@ -1,5 +1,7 @@
+'use strict';
+
 var React = require('react');
-var TwitterTypeahead = require('../dist/js/react-typeahead');
+var ReactTypeahead = require('./lib/js/react-typeahead');
 
 var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
   'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
@@ -17,8 +19,6 @@ var bloodhoundConfig = {
 };
 
 React.render(
-    <TwitterTypeahead config={componentConfig} 
-                       eventHandlers={eventHandlers} 
-                       djsConfig={djsConfig} />, 
-    document.getElementById('content')
+    <ReactTypeahead bloodhound={bloodhoundConfig} />,
+    document.getElementById('#typeaheadDiv')
 );

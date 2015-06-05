@@ -12,30 +12,33 @@
       "web": "erikschlegel.com"
     }
   ],
-  "peerDependencies": {
-    "react": "^0.13.0"
-  },
   "devDependencies": {
-    "bower": "~1.3.1",
     "browserify": "^9.0.3",
-    "esprima-fb": "^15001.1.0-dev-harmony-fb",
+    "browserify-shim": "^3.8.3",
+    "envify": "^3.2.0",
     "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-test": "*",
+    "grunt-react": "^0.12.2",
+    "grunt-watchify": "^0.1.0",
     "jscs": "^1.13.1",
-    "lodash": ">=2.4.x",
     "react": ">=0.13.0",
     "react-tools": "^0.13.3",
     "reactify": "^0.17.1"
   },
   "dependencies": {
     "typeahead.js": "^0.11.1",
+    "jquery": "^1.11",
     "extend": "^2.0.1"
   },
   "scripts": {
     "test": "grunt test",
     "build": "grunt"
+  },
+  "browserify-shim": {
+    "typeahead.js/dist/typeahead.bundle": "global:typeahead"
   },
   "testResultMain": "testResults.txt"
 }

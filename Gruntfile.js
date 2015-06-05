@@ -14,6 +14,16 @@ module.exports = function (grunt) {
             }
         },
 
+        bower: {
+            install: {
+                options: {
+                    targetDir: 'vendor',
+                    cleanTargetDir: true,
+                    cleanBowerDir: true                    
+               }
+            }
+        },
+
         browserify: {
             lib: {
                 src: './lib/'+pkg.main,
@@ -29,7 +39,7 @@ module.exports = function (grunt) {
                 }
             },
             example: {
-                src: './example/typeahead-sample.js',
+                src: './example.js',
                 dest: './example/example-deploy.js',
                 options: {
                     debug: true,
@@ -37,7 +47,7 @@ module.exports = function (grunt) {
                     transform: [
                         ['reactify', {
                             'es6': true
-                        }]
+                        }], "browserify-shim"
                     ]
                 }
             }
@@ -69,7 +79,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-jscs");
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-bower-task');
 
-    grunt.registerTask('default', ['test', 'browserify:lib', 'watch']);
+    grunt.registerTask('default', ['bower', 'test', 'browserify:lib', 'watch']);
     grunt.registerTask('test', ['jscs']);
 };
