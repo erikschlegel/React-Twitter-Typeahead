@@ -15,9 +15,22 @@ module.exports = function (grunt) {
         },
 
         browserify: {
-            dev: {
+            lib: {
                 src: './lib/'+pkg.main,
                 dest: './dist/'+pkg.main,
+                options: {
+                    debug: true,
+                    extensions: ['.js'],
+                    transform: [
+                        ['reactify', {
+                            'es6': true
+                        }]
+                    ]
+                }
+            },
+            example: {
+                src: './example/typeahead-sample.js',
+                dest: './example/example-deploy.js',
                 options: {
                     debug: true,
                     extensions: ['.js'],
@@ -39,7 +52,7 @@ module.exports = function (grunt) {
                 esprima: 'esprima-fb',
                 esnext: true
             }
-        }
+        },
 
         test: {
             options: {
@@ -57,6 +70,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-jscs");
     grunt.loadNpmTasks('grunt-mocha-test');
 
-    grunt.registerTask('default', ['test', 'browserify', 'watch']);
+    grunt.registerTask('default', ['test', 'browserify:lib', 'watch']);
     grunt.registerTask('test', ['jscs']);
 };

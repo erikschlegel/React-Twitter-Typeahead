@@ -3,7 +3,7 @@
   "description": "A reactJS component that integrates Twitter's typeahead autosuggest control",
   "version": "0.0.1",
   "license": "MIT",
-  "main" : "js/react-typeahead.js",
+  "main": "js/react-typeahead.js",
   "repository": "erikschlegel/React-Twitter-Typeahead",
   "maintainers": [
     {
@@ -16,23 +16,26 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "browserify": "^9.0.3",
-    "react": ">=0.13.0",
-    "react-tools": "^0.13.3",
-    "grunt": "^0.4.5",
     "bower": "~1.3.1",
+    "browserify": "^9.0.3",
+    "esprima-fb": "^15001.1.0-dev-harmony-fb",
+    "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-test" : "*",
+    "grunt-mocha-test": "*",
+    "jscs": "^1.13.1",
     "lodash": ">=2.4.x",
+    "react": ">=0.13.0",
+    "react-tools": "^0.13.3",
+    "reactify": "^0.17.1"
   },
   "dependencies": {
     "typeahead.js": "^0.11.1",
-    "extend" : "^2.0.1"
+    "extend": "^2.0.1"
   },
   "scripts": {
     "test": "grunt test",
     "build": "grunt"
   },
-  "testResultMain" : "testResults.txt"
+  "testResultMain": "testResults.txt"
 }
