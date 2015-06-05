@@ -26,11 +26,12 @@ React.render(
 );
 
 var responseTransformation = function(rsp){
-      var initRsp = rsp.items, maxCharacterLgth = 100;
+      var initRsp = rsp.items, maxCharacterLgth = 25;
       var finalResult = [];
       
       initRsp.map(function(item){
-          finalResult.push({value: item.volumeInfo.title});
+          var title = item.volumeInfo.title;
+          finalResult.push({value: title.length>maxCharacterLgth?title.substring(0, maxCharacterLgth):title});
       });
 
       return finalResult;
@@ -50,9 +51,14 @@ var dsRemote = {
   display: 'value'
 };
 
+var typeaheadConfig = {
+    limit: 10;
+};
+
 React.render(
     <ReactTypeahead bloodhound={bloodhoundRemoteConfig} 
                     datasource={dsRemote}
+                    typeahead={typeaheadConfig}
                     placeHolder="Lets find something cool to read" />,
     document.getElementById('#typeaheadDivRpc')
 );

@@ -21,16 +21,18 @@ var bloodhoundConfig = {
 };
 
 React.render(
-    React.createElement(ReactTypeahead, {bloodhound: bloodhoundConfig}),
+    React.createElement(ReactTypeahead, {bloodhound: bloodhoundConfig, 
+                    placeHolder: "States in the U.S"}),
     document.getElementById('#typeaheadDiv')
 );
 
 var responseTransformation = function(rsp){
-      var initRsp = rsp.items, maxCharacterLgth = 100;
+      var initRsp = rsp.items, maxCharacterLgth = 50;
       var finalResult = [];
       
       initRsp.map(function(item){
-          finalResult.push({value: item.volumeInfo.title});
+          var title = item.volumeInfo.title;
+          finalResult.push({value: title.length>maxCharacterLgth?title.substring(0, maxCharacterLgth):title});
       });
 
       return finalResult;
