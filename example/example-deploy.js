@@ -3,6 +3,7 @@
 
 var React = require('react');
 var ReactTypeahead = require('./lib/js/react-typeahead');
+var demoDataCallRoot = 'http://demos.telerik.com/kendo-ui/';
 
 var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
   'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
@@ -22,6 +23,38 @@ var bloodhoundConfig = {
 React.render(
     React.createElement(ReactTypeahead, {bloodhound: bloodhoundConfig}),
     document.getElementById('#typeaheadDiv')
+);
+
+var responseTransformation = function(rsp){
+      var initRsp = rsp.items, maxCharacterLgth = 100;
+      var finalResult = [];
+      
+      initRsp.map(function(item){
+          finalResult.push({value: item.volumeInfo.title});
+      });
+
+      return finalResult;
+};
+
+var bloodhoundRemoteConfig = {
+  prefetch: 'https://www.googleapis.com/books/v1/volumes?q=reactjs',
+  remote: {
+    url: 'https://www.googleapis.com/books/v1/volumes?q=%QUERY',
+    wildcard: '%QUERY',
+    transform: responseTransformation
+  }
+};
+
+var dsRemote = {
+  name: 'best-pictures',
+  display: 'value'
+};
+
+React.render(
+    React.createElement(ReactTypeahead, {bloodhound: bloodhoundRemoteConfig, 
+                    datasource: dsRemote, 
+                    placeHolder: "Lets find something cool to read"}),
+    document.getElementById('#typeaheadDivRpc')
 );
 },{"./lib/js/react-typeahead":2,"react":159}],2:[function(require,module,exports){
 var React = require('react'),
@@ -65,6 +98,22 @@ ReactTypeahead = React.createClass({displayName: "ReactTypeahead",
         config.datasource = extend(true, {}, defaults.datasource, this.props.datasource);
 
         return config;
+    },
+
+    loadScript: function(scriptURL){
+   		 script = document.createElement('script');
+	  	 script.src = scriptURL;
+	  	 script.type = 'text/javascript';
+	     script.async = true;
+		 document.body.appendChild(script);
+    },
+
+    /**
+     * 'getInitialState' method
+     * We want to make sure that the jquery and typeahead libraries are loaded into the DOM
+     */
+    getInitialState: function(){
+    	return {data: []};
     },
 	/**
      * 'componentDidMount' method

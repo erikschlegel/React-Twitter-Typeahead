@@ -47,7 +47,7 @@ module.exports = function (grunt) {
                     transform: [
                         ['reactify', {
                             'es6': true
-                        }], "browserify-shim"
+                        }] 
                     ]
                 }
             }
