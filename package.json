@@ -37,8 +37,5 @@
     "test": "grunt test",
     "build": "grunt"
   },
-  "browserify-shim": {
-    "typeahead.js/dist/typeahead.bundle": "global:typeahead"
-  },
   "testResultMain": "testResults.txt"
 }
