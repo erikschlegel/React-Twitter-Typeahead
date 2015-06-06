@@ -45,7 +45,8 @@ var responseTransformation = function(rsp){
       initRsp.map(function(item){
           var title = item.volumeInfo.title;
           finalResult.push({value: title.length>maxCharacterTitleLgth?title.substring(0, maxCharacterTitleLgth):title,
-                            thumbnail: item.volumeInfo.imageLinks.thumbnail, 
+                            thumbnail: item.volumeInfo.imageLinks.thumbnail,
+                            id: item.id,
                             description:(item.volumeInfo.description)?item.volumeInfo.description.substring(0, maxDescLength):''});
       });
 
@@ -73,12 +74,51 @@ var dsRemote = {
   }
 };
 
+var selectedFunc = function(e, datum){alert('Selected book: ' + datum['id']);};
+
+var customEvents = {
+  'typeahead:selected typeahead:autocompleted': selectedFunc
+};
+
 var typeaheadConfig = {highlight:false};
 
 React.render(
     <ReactTypeahead bloodhound={bloodhoundRemoteConfig} 
                     datasource={dsRemote}
+                    customEvents = {customEvents}
                     typeahead={typeaheadConfig}
                     placeHolder="A remote call + custom template" />,
     document.getElementById('#typeaheadDivRpc')
+);
+
+var remoteTransformation = function(rsp){
+      var initRsp = rsp.items, maxCharacterLgth = 100;
+      var finalResult = [];
+      
+      initRsp.map(function(item){
+          finalResult.push({value: item.volumeInfo.title});
+      });
+
+      return finalResult;
+};
+
+var bloodhoundRPCConfig = {
+  prefetch: 'https://www.googleapis.com/books/v1/volumes?q=reactjs',
+  remote: {
+    url: 'https://www.googleapis.com/books/v1/volumes?q=%QUERY',
+    wildcard: '%QUERY',
+    transform: remoteTransformation
+  }
+};
+
+var remoteDS = {
+  name: 'best-books',
+  display: 'value'
+};
+
+React.render(
+    <ReactTypeahead bloodhound={bloodhoundRPCConfig} 
+                    datasource={remoteDS}
+                    placeHolder="vanilla remote service typeahead" />,
+    document.getElementById('#typeaheadDivRemote')
 );

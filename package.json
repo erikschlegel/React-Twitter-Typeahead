@@ -1,7 +1,7 @@
 {
   "name": "React-Twitter-Typeahead",
   "description": "A reactJS component that integrates Twitter's typeahead autosuggest control",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "js/react-typeahead.js",
   "repository": "erikschlegel/React-Twitter-Typeahead",
