@@ -26,6 +26,8 @@ var handlerbarTemplate = '<div class="tt-custom-row"> ' +
                                    '     </span>' +
                                    ' </div>';
 
+var header = '<div><span class="tt-custom-header" style="width:25%">Book Cover</span><span style="width:75%" class="tt-custom-header">Book Title/Description</span>'
+
 var bloodhoundConfig = {
 	local: states
 };
@@ -64,6 +66,9 @@ var dsRemote = {
   display: 'value',
   limit: 8,
   templates: {
+    header: header,
+    pending: '<div style="padding-left:5px;">Processing...</div>',
+    empty: '<div>unable to find any books that matched your query</div>',
     suggestion: Handlebars.compile(handlerbarTemplate)
   }
 };
