@@ -82,5 +82,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
 
     grunt.registerTask('default', ['bower', 'test', 'browserify:lib', 'watch']);
+    grunt.registerTask('build', ['bower', 'browserify:lib']);
     grunt.registerTask('test', ['jscs']);
 };

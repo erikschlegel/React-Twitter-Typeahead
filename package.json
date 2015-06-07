@@ -38,7 +38,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "build": "grunt browserify:lib"
+    "build": "grunt build"
   },
   "testResultMain": "testResults.txt"
 }
