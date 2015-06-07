@@ -1,7 +1,7 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/erikschlegel/React-Twitter-Typeahead?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/erikschlegel/React-Twitter-Typeahead.svg)](https://travis-ci.org/erikschlegel/React-Twitter-Typeahead)
 
 ## React-Twitter-Typeahead
-A dashing and flexible reactJS component that integrates Twitter's typeahead.js autosuggest control with ReactJS. Typeahead.js is one of the most frequently used and trusted solutions for a battle-tested autosuggest control. 
+A dashing and flexible reactJS autosuggest component that integrates Twitter's typeahead.js with ReactJS. Typeahead.js was built by Twitter and is one of the most frequently used and trusted solutions for a battle-tested autosuggest control. 
 
 The preview below showcases configuring this component for searching against google books using a custom template.
 
@@ -36,7 +36,8 @@ React.render(
 
 You can also configure the component to make a JSONP remote call and dress up the results by using a handlebar custom template.
 
-Bloodhound allows you to transform the returned response before getting operated on by typeahead(var responseTransformation). In the example below we're extracting the data points from the response that are relevant for the rendering. The remote call can be configured in the remote object of the bloodhound config. All other available options are listed in Twitter's API [docs](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#remote).
+###Configuring the remote call
+Bloodhound allows you to transform the returned response prior to typeahead.js processing(var responseTransformation). In the example below we're extracting the data points from the response that are relevant for rendering. The URL call can be configured in the 'remote' object of the bloodhound config. All other available options are listed in Twitter's API [docs](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#remote).
 ```js
 var responseTransformation = function(rsp){
       var initRsp = rsp.items, maxCharacterTitleLgth = 29, maxDescLength = 80;
@@ -60,6 +61,36 @@ var bloodhoundRemoteConfig = {
     transform: responseTransformation
   }
 };
+```
+###Adding some style
+You can customize the presentation of the remote dataset by overriding the dataset config. All available options are listed [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets). This project comes packaged with handlebars, but you're free to use your template library of choice. 
+```js
+var Handlebars = require('handlebars');
+
+var datasetConfig = {
+  name: 'books-to-buy',
+  display: 'value',
+  limit: 8,
+  templates: {
+    header: header,
+    pending: '<div style="padding-left:5px;">Processing...</div>',
+    empty: '<div>unable to find any books that matched your query</div>',
+    suggestion: Handlebars.compile(handlerbarTemplate)
+  }
+};
+```
+###Brining it all together with some additional typeahead configuring
+```js
+var typeaheadConfig = {highlight:false};
+
+React.render(
+    <ReactTypeahead bloodhound={bloodhoundRemoteConfig} 
+                    datasource={datasetConfig}
+                    customEvents = {customEvents}
+                    typeahead={typeaheadConfig}
+                    placeHolder="A remote call + custom template" />,
+    document.getElementById('#typeaheadDivRpc')
+);
 ```
 
 ## Dependencies
