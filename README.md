@@ -7,7 +7,7 @@ The preview below utilized this react component to create a typeahead for search
 
 ![](https://raw.githubusercontent.com/erikschlegel/React-Twitter-Typeahead/master/assets/react-typeahead-animation.gif)
 
-[Online sample demonstration](http://reactypeahead.azurewebsites.net/example/)
+[See some examples on our Azure site](http://reactypeahead.azurewebsites.net/example/)
 
 ## Installation
 ```js
