@@ -9,7 +9,7 @@ The preview below utilized this react component to create a typeahead for search
 
 ## Installation
 ```js
-git clone [https://github.com/erikschlegel/React-Twitter-Typeahead.git](https://github.com/erikschlegel/React-Twitter-Typeahead.git)
+git clone https://github.com/erikschlegel/React-Twitter-Typeahead.git
 cd React-Twitter-Typeahead
 npm install
 npm run build
