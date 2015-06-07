@@ -34,7 +34,33 @@ React.render(
 );
 ```
 
-Make a JSONP remote call and dress up the results on the control.
+You can also configure the component to make a JSONP remote call and dress up the results by using a handlebar custom template.
+
+Bloodhound allows you to transform the returned response before getting operated on by typeahead(var responseTransformation). In the example below we're extracting the data points from the response that are relevant for the rendering. The remote call can be configured in the remote object of the bloodhound config. All other available options are listed in Twitter's API [docs](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#remote).
+```js
+var responseTransformation = function(rsp){
+      var initRsp = rsp.items, maxCharacterTitleLgth = 29, maxDescLength = 80;
+      var finalResult = [];
+      
+      initRsp.map(function(item){
+          var title = item.volumeInfo.title;
+          finalResult.push({value: title.length>maxCharacterTitleLgth?title.substring(0, maxCharacterTitleLgth):title,
+                            thumbnail: item.volumeInfo.imageLinks.thumbnail,
+                            id: item.id,
+                            description:(item.volumeInfo.description)?item.volumeInfo.description.substring(0, maxDescLength):''});
+      });
+
+      return finalResult;
+};
+
+var bloodhoundRemoteConfig = {
+  remote: {
+    url: 'https://www.googleapis.com/books/v1/volumes?q=%QUERY',
+    wildcard: '%QUERY',/*typeahead.js will replace the specified wildcard with the inputted value in the GET call*/
+    transform: responseTransformation
+  }
+};
+```
 
 ## Dependencies
 This requires NPM. Also, the underlying typeahead.js library uses jquery to hook some initial events to the control, so you'll need to include the following scripts towards the end of your html page.   
