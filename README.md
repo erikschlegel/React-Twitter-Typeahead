@@ -1,4 +1,4 @@
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/erikschlegel/React-Twitter-Typeahead?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/erikschlegel/React-Twitter-Typeahead?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) https://travis-ci.org/erikschlegel/React-Twitter-Typeahead.svg  
 
 ## React-Twitter-Typeahead
 A dashing and flexible reactJS component that integrates Twitter's typeahead.js autosuggest control with ReactJS. Typeahead.js is one of the most frequently used and trusted solutions for a battle-tested autosuggest control. 
