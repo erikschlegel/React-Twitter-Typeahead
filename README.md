@@ -17,7 +17,7 @@ npm install
 npm run build
 ```
 ## Usage
-Let's start off creating a basic typeahead by customizing the bloodhound config object. Bloodhound is typeahead.js's powerful suggestion engine. 
+Let's start off creating a basic typeahead by customizing the bloodhound config object. Bloodhound is typeahead.js's powerful suggestion engine. The API docs that explain the available options in the bloodhound config object are [here](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#options).
 ```js
 var React = require('react');
 var ReactTypeahead = require('./lib/js/react-typeahead');
@@ -33,6 +33,9 @@ React.render(
     document.getElementById('#typeaheadDiv')
 );
 ```
+
+Make a JSONP remote call and dress up the results on the control.
+
 ## Dependencies
 This requires NPM. Also, the underlying typeahead.js library uses jquery to hook some initial events to the control, so you'll need to include the following scripts towards the end of your html page.   
 ```html
