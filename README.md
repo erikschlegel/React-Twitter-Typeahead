@@ -3,4 +3,4 @@ A dashing and flexible reactJS component that integrates Twitter's typeahead.js 
 
 The preview below utilized this React component to create a typeahead for searching against google books using a custom template.
 
-![](https://raw.githubusercontent.com/erikschlegel/React-Twitter-Typeahead/react-typeahead-animation.gif)
+![](https://raw.githubusercontent.com/erikschlegel/React-Twitter-Typeahead/master/assets/react-typeahead-animation.gif)
