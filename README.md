@@ -37,6 +37,7 @@ React.render(
 You can also configure the component to make a JSONP remote call and dress up the results by using a handlebar custom template.
 
 **Configuring the remote call**
+
 Bloodhound allows you to transform the returned response prior to typeahead.js processing(var responseTransformation). In the example below we're extracting the data points from the response that are relevant for rendering. The URL call can be configured in the 'remote' object of the bloodhound config. All other available options are listed in Twitter's API [docs](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#remote).
 ```js
 var responseTransformation = function(rsp){
@@ -63,6 +64,7 @@ var bloodhoundRemoteConfig = {
 };
 ```
 **Adding some style**
+
 You can customize the presentation of the remote dataset by overriding the dataset config. All available options are listed [here](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets). This project comes packaged with handlebars, but you're free to use your template library of choice. 
 ```js
 var Handlebars = require('handlebars');
@@ -79,7 +81,18 @@ var datasetConfig = {
   }
 };
 ```
+**Binding Custom Events**
+
+Custom callbacks can be provided in the customEvents config. This sample callback is invoked when you select an option in the dropdowan. 'id' is a property on the returning dataset. All other optional callback functions can be found in the [docs](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#custom-events). 
+```js
+var selectedFunc = function(e, datum){alert('Selected book: ' + datum['id']);};
+var customEvents = {
+  'typeahead:selected typeahead:autocompleted': selectedFunc
+};
+```
+
 **Brining it all together with some additional typeahead configuring**
+
 ```js
 var typeaheadConfig = {highlight:false};
 
