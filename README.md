@@ -19,10 +19,19 @@ npm run build
 ## Usage
 Let's start off creating a basic typeahead by customizing the bloodhound config object. Bloodhound is typeahead.js's powerful suggestion engine. 
 ```js
-git clone https://github.com/erikschlegel/React-Twitter-Typeahead.git
-cd React-Twitter-Typeahead
-npm install
-npm run build
+var React = require('react');
+var ReactTypeahead = require('./lib/js/react-typeahead');
+var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California';//....
+
+var bloodhoundConfig = {
+	local: states
+};
+
+React.render(
+    <ReactTypeahead bloodhound={bloodhoundConfig} 
+                    placeHolder="States - A basic example"/>,
+    document.getElementById('#typeaheadDiv')
+);
 ```
 ## Dependencies
 This requires NPM. Also, the underlying typeahead.js library uses jquery to hook some initial events to the control, so you'll need to include the following scripts towards the end of your html page.   
