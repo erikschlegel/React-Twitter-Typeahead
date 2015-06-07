@@ -19,9 +19,6 @@ notifications:
       - "Change View: %{compare_url}"
     skip_join: true
 
-after_success:
-  - npm run build
-
 branches:
   only:
     - master
