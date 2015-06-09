@@ -29,3 +29,4 @@ bower_components
 vendor
 
 dist/js/*
+example/dist/*

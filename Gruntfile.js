@@ -39,8 +39,8 @@ module.exports = function (grunt) {
                 }
             },
             example: {
-                src: './example.js',
-                dest: './example/example-deploy.js',
+                src: grunt.option('src-file'),
+                dest: './example/dist/'+grunt.option('src-file'),
                 options: {
                     debug: true,
                     extensions: ['.js'],
