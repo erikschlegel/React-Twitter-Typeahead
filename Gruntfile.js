@@ -8,6 +8,10 @@ module.exports = function (grunt) {
                 files: ['lib/**/*.js'],
                 tasks: ['browserify:lib']
             },
+            example: {
+                files: [grunt.option('src-file')],
+                tasks: ['browserify:example']
+            },
             options: {
                 nospawn: true,
                 livereload: true
