@@ -2,7 +2,6 @@
 
 var React = require('react');
 var ReactTypeahead = require('./lib/js/react-typeahead');
-var demoDataCallRoot = 'http://demos.telerik.com/kendo-ui/';
 var Handlebars = require('handlebars');
 
 var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
@@ -13,7 +12,7 @@ var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
   'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
   'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
   'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+  'Virgini', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
 var handlerbarTemplate = '<div class="tt-custom-row"> ' + 

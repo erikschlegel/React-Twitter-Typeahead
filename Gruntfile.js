@@ -1,6 +1,9 @@
 var pkg = require('./package.json');
 
 module.exports = function (grunt) {
+    var exampleFile = grunt.option('src-file');
+        exampleFile = (!exampleFile)?'':exampleFile;
+        exampleFileDest = exampleFile.lastIndexOf('/')>-1?exampleFile.substring(exampleFile.lastIndexOf('/'), exampleFile.length):exampleFile;
 
     grunt.initConfig({
         watch: {
@@ -9,7 +12,7 @@ module.exports = function (grunt) {
                 tasks: ['browserify:lib']
             },
             example: {
-                files: [grunt.option('src-file')],
+                files: [exampleFile],
                 tasks: ['browserify:example']
             },
             options: {
@@ -43,8 +46,8 @@ module.exports = function (grunt) {
                 }
             },
             example: {
-                src: grunt.option('src-file'),
-                dest: './example/dist/'+grunt.option('src-file'),
+                src: exampleFile,
+                dest: './example/dist/'+exampleFileDest,
                 options: {
                     debug: true,
                     extensions: ['.js'],
