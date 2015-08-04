@@ -12,7 +12,7 @@ var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
   'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
   'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
   'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  'Virgini', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
 var handlerbarTemplate = '<div class="tt-custom-row"> ' + 

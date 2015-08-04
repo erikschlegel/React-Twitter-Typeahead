@@ -26,7 +26,5 @@ build/Release
 # Dependency directory
 node_modules
 bower_components
-vendor
 
 dist/js/*
-example/dist/*
