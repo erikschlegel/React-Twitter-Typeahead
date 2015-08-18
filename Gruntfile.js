@@ -39,7 +39,7 @@ module.exports = function (grunt) {
                     debug: true,
                     extensions: ['.js'],
                     transform: [
-                        ['reactify', {
+                        ['babelify', {
                             'es6': true
                         }]
                     ]
@@ -52,9 +52,9 @@ module.exports = function (grunt) {
                     debug: true,
                     extensions: ['.js'],
                     transform: [
-                        ['reactify', {
+                        ['babelify', {
                             'es6': true
-                        }] 
+                        }]
                     ]
                 }
             }
