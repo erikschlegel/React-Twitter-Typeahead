@@ -33,8 +33,8 @@ module.exports = function (grunt) {
 
         browserify: {
             lib: {
-                src: pkg.main,
-                dest: './dist/'+pkg.main,
+                src: pkg.componentJSX,
+                dest: './dist/'+pkg.componentJSX,
                 options: {
                     debug: true,
                     extensions: ['.js'],
