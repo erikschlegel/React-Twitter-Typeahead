@@ -26,22 +26,22 @@ module.exports = function (grunt) {
                 options: {
                     targetDir: 'vendor',
                     cleanTargetDir: true,
-                    cleanBowerDir: true                    
+                    cleanBowerDir: true
                }
             }
         },
 
         browserify: {
             lib: {
-                src: './lib/'+pkg.main,
+                src: pkg.main,
                 dest: './dist/'+pkg.main,
                 options: {
                     debug: true,
                     extensions: ['.js'],
                     transform: [
-                        ['babelify', {
-                            'es6': true
-                        }]
+                      ['babelify', {
+                        loose: 'all'
+                      }]
                     ]
                 }
             },
@@ -52,9 +52,9 @@ module.exports = function (grunt) {
                     debug: true,
                     extensions: ['.js'],
                     transform: [
-                        ['babelify', {
-                            'es6': true
-                        }] 
+                      ['babelify', {
+                        loose: 'all'
+                      }]
                     ]
                 }
             }
@@ -75,8 +75,8 @@ module.exports = function (grunt) {
             options: {
               reporter: 'spec',
               captureFile: pkg.testResultMain, // Optionally capture the reporter output to a file
-              quiet: false, // Optionally suppress output to standard out (defaults to false) 
-              clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false) 
+              quiet: false, // Optionally suppress output to standard out (defaults to false)
+              clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
             },
             src: ['test/**/*.js']
         }
