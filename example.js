@@ -15,13 +15,13 @@ var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
   'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
-var handlerbarTemplate = '<div class="tt-custom-row"> ' + 
-                                   '     <span class="tt-custom-cell tt-custom-thumbnail">' + 
-                                   '         <img src="{{thumbnail}}" />' + 
-                                   '     </span>' + 
+var handlerbarTemplate = '<div class="tt-custom-row"> ' +
+                                   '     <span class="tt-custom-cell tt-custom-thumbnail">' +
+                                   '         <img src="{{thumbnail}}" />' +
+                                   '     </span>' +
                                    '     <span class="tt-custom-cell">' +
-                                   '           <h3>{{value}}</h3>' + 
-                                   '           <p>{{description}}</p>' + 
+                                   '           <h3>{{value}}</h3>' +
+                                   '           <p>{{description}}</p>' +
                                    '     </span>' +
                                    ' </div>';
 
@@ -32,7 +32,7 @@ var bloodhoundConfig = {
 };
 
 React.render(
-    <ReactTypeahead bloodhound={bloodhoundConfig} 
+    <ReactTypeahead bloodhound={bloodhoundConfig}
                     placeHolder="States - A basic example"/>,
     document.getElementById('#typeaheadDiv')
 );
@@ -40,7 +40,7 @@ React.render(
 var responseTransformation = function(rsp){
       var initRsp = rsp.items, maxCharacterTitleLgth = 29, maxDescLength = 80;
       var finalResult = [];
-      
+
       initRsp.map(function(item){
           var title = item.volumeInfo.title;
           finalResult.push({value: title.length>maxCharacterTitleLgth?title.substring(0, maxCharacterTitleLgth):title,
@@ -82,7 +82,7 @@ var customEvents = {
 var typeaheadConfig = {highlight:false};
 
 React.render(
-    <ReactTypeahead bloodhound={bloodhoundRemoteConfig} 
+    <ReactTypeahead bloodhound={bloodhoundRemoteConfig}
                     datasource={dsRemote}
                     customEvents = {customEvents}
                     typeahead={typeaheadConfig}
@@ -93,7 +93,7 @@ React.render(
 var remoteTransformation = function(rsp){
       var initRsp = rsp.items, maxCharacterLgth = 100;
       var finalResult = [];
-      
+
       initRsp.map(function(item){
           finalResult.push({value: item.volumeInfo.title});
       });
@@ -116,7 +116,7 @@ var remoteDS = {
 };
 
 React.render(
-    <ReactTypeahead bloodhound={bloodhoundRPCConfig} 
+    <ReactTypeahead bloodhound={bloodhoundRPCConfig}
                     datasource={remoteDS}
                     placeHolder="vanilla remote service typeahead" />,
     document.getElementById('#typeaheadDivRemote')

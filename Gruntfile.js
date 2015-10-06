@@ -3,7 +3,9 @@ var pkg = require('./package.json');
 module.exports = function (grunt) {
     var exampleFile = grunt.option('src-file');
         exampleFile = (!exampleFile)?'':exampleFile;
+        console.log('ex:'+exampleFile);
         exampleFileDest = exampleFile.lastIndexOf('/')>-1?exampleFile.substring(exampleFile.lastIndexOf('/'), exampleFile.length):exampleFile;
+        console.log('ex:'+exampleFileDest);
 
     grunt.initConfig({
         watch: {
@@ -46,10 +48,12 @@ module.exports = function (grunt) {
                 }
             },
             example: {
-                src: exampleFile,
-                dest: './example/dist/'+exampleFileDest,
+                src: './example.js',
+                dest: './example/dist/example.js',
+                cwd: __dirname,
                 options: {
                     debug: true,
+                    cwd: __dirname,
                     extensions: ['.js'],
                     transform: [
                       ['babelify', {

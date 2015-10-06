@@ -2,10 +2,9 @@
 'use strict';
 
 var React = require('react'),
-    Bloodhound = require('typeahead.js/dist/bloodhound'),
-    $ = require('jquery'),
-    Typeahead = require('typeahead.js/dist/typeahead.jquery'),
     extend = require("extend"),
+    Bloodhound = require('typeahead.js/dist/bloodhound'),
+    Typeahead = require('typeahead.js/dist/typeahead.jquery'),
     ReactTypeahead;
 
 ReactTypeahead = React.createClass({ displayName: "ReactTypeahead",
@@ -95,7 +94,7 @@ ReactTypeahead = React.createClass({ displayName: "ReactTypeahead",
 
 module.exports = ReactTypeahead;
 
-},{"extend":3,"jquery":4,"react":159,"typeahead.js/dist/bloodhound":160,"typeahead.js/dist/typeahead.jquery":161}],2:[function(require,module,exports){
+},{"extend":3,"react":159,"typeahead.js/dist/bloodhound":160,"typeahead.js/dist/typeahead.jquery":161}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
