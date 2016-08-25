@@ -83,7 +83,7 @@ var datasetConfig = {
 ```
 **Binding Custom Events**
 
-Custom callbacks can be provided in the customEvents config. This sample callback is invoked when you select an option in the dropdowan. 'id' is a property on the returning dataset. All other optional callback functions can be found in the [docs](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#custom-events). 
+Custom callbacks can be provided in the customEvents config. This sample callback is invoked when you select an option in the dropdown. 'id' is a property on the returning dataset. All other optional callback functions can be found in the [docs](https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#custom-events). 
 ```js
 var selectedFunc = function(e, datum){alert('Selected book: ' + datum['id']);};
 var customEvents = {
